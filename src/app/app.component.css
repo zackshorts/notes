@@ -1,0 +1,24 @@
+.app-grid {
+  display: grid;
+  grid-template-areas: "header header header"
+                        "sidenav maintext maintext"
+                        "sidenav maintext maintext";
+  grid-template-rows: 100px auto;
+  grid-template-columns: 200px auto auto;
+  height: 100vh;
+}
+
+app-header {
+  height: 50px;
+  grid-area: header;
+}
+
+app-sidenav {
+  background-color: red;
+  grid-area: sidenav;
+}
+
+app-maintext {
+  background-color: blue;
+  grid-area: maintext;
+}
