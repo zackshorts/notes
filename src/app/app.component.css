@@ -3,22 +3,24 @@
   grid-template-areas: "header header header"
                         "sidenav maintext maintext"
                         "sidenav maintext maintext";
-  grid-template-rows: 100px auto;
+  grid-template-rows: 64px auto;
   grid-template-columns: 200px auto auto;
   height: 100vh;
 }
 
 app-header {
-  height: 50px;
+  height:fit-content;
   grid-area: header;
 }
 
 app-sidenav {
   background-color: red;
   grid-area: sidenav;
+  overflow: scroll;
 }
 
 app-maintext {
   background-color: blue;
   grid-area: maintext;
+  overflow: scroll;
 }
