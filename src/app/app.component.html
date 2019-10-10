@@ -1,6 +1,18 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div class="app-grid">
-  <app-header></app-header>
-  <app-sidenav></app-sidenav>
-  <app-maintext></app-maintext>
+<div>
+  <div class="app-grid" *ngIf="auth.user$ | async as user; else login">
+    <app-header></app-header>
+    <app-sidenav></app-sidenav>
+    <app-maintext></app-maintext>
+  </div>
+  <ng-template #login>
+    <button (click)="auth.googleSignin()">Login with Google</button>
+  </ng-template>
 </div>
+
+<!--<div *ngIf="auth.user$ | async as user; else login">-->
+<!--  <pre>{{user | json}}</pre>-->
+<!--  <hr>-->
+<!--  <button (click)="auth.signOut()">sign out</button>-->
+<!--</div>-->
+
