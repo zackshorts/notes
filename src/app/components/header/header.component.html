@@ -1,11 +1,12 @@
 <mat-toolbar color='primary'>
     <mat-toolbar-row>
         <a href="../../../index.html"><img src="../../../assets/note.svg"/></a>
-        
+
         <div class="nav">
-            <p>header works!</p>
+          <p>Welcome, {{user}}</p>
+          <button mat-raised-button (click)="auth.signOut()">sign out</button>
         </div>
-        
+
     </mat-toolbar-row>
 </mat-toolbar>
 

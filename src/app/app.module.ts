@@ -12,7 +12,7 @@ import {environment} from '../environments/environment';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFireModule} from '@angular/fire';
-import {MatButtonModule, MatCardModule} from '@angular/material';
+import {MatButtonModule, MatCardModule, MatExpansionModule, MatFormFieldModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -31,6 +31,8 @@ import {MatButtonModule, MatCardModule} from '@angular/material';
     AngularFireAuthModule,
     MatButtonModule,
     MatCardModule,
+    MatExpansionModule,
+    MatFormFieldModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

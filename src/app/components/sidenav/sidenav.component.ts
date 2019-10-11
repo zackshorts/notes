@@ -10,7 +10,6 @@ export class SidenavComponent implements OnInit {
   constructor() { }
     @Input() user;
   ngOnInit() {
-
   }
 
 }
