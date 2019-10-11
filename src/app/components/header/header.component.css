@@ -1,0 +1,10 @@
+a, img {
+    height: 90%;
+    width: auto;
+}
+
+.nav {
+    justify-content: flex-end;
+    margin-right: 0;
+    margin-left: auto;
+}
