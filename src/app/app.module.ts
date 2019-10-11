@@ -7,6 +7,7 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { MaintextComponent } from './components/maintext/maintext.component';
 import { HeaderComponent } from './components/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatToolbarModule} from '@angular/material/toolbar';
 import {environment} from '../environments/environment';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {AngularFireAuthModule} from '@angular/fire/auth';
@@ -24,6 +25,7 @@ import {MatButtonModule, MatCardModule} from '@angular/material';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    MatToolbarModule
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     AngularFireAuthModule,
