@@ -1,11 +1,37 @@
 .app-grid {
   display: grid;
-  grid-template-areas: "header header header"
-                        "sidenav maintext maintext"
-                        "sidenav maintext maintext";
+  grid-template-areas: "header"
+                        "maintext";
   grid-template-rows: 64px auto;
-  grid-template-columns: 200px auto auto;
+  grid-template-columns: 1fr;
   height: 100vh;
+}
+
+app-header {
+  height:fit-content;
+  grid-area: header;
+}
+
+mat-sidenav {
+  grid-area: sidenav;
+  overflow: scroll;
+}
+
+.mat-drawer-container {
+  background-color: white !important;
+}
+
+/*mat-sidenav {*/
+/*  background-color: black;*/
+/*}*/
+
+mat-sidenav-content {
+  grid-area: maintext;
+  overflow: scroll;
+}
+
+.sidenav-button {
+  position: absolute;
 }
 
 .login-grid {
@@ -84,21 +110,4 @@ mat-card {
 
 button {
   margin-top: 15px;
-}
-
-app-header {
-  height:fit-content;
-  grid-area: header;
-}
-
-app-sidenav {
-  background-color: red;
-  grid-area: sidenav;
-  overflow: scroll;
-}
-
-app-maintext {
-  background-color: blue;
-  grid-area: maintext;
-  overflow: scroll;
 }

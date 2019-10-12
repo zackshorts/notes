@@ -2,8 +2,17 @@
 <div>
   <div class="app-grid" *ngIf="auth.user$ | async as user; else login">
     <app-header [user]="user.displayName"></app-header>
-    <app-sidenav></app-sidenav>
-    <app-maintext></app-maintext>
+    <mat-sidenav-container class="example-container" >
+
+      <mat-sidenav mode="side" #sidenav opened><app-sidenav></app-sidenav></mat-sidenav>
+
+      <mat-sidenav-content>
+          <button class="sidenav-button" mat-button *ngIf="!sidenav.opened" (click)="sidenav.open()"><mat-icon>navigate_next</mat-icon></button>
+          <button class="sidenav-button" mat-button *ngIf="sidenav.opened" (click)="sidenav.close()"><mat-icon>navigate_before</mat-icon></button>
+        <app-maintext></app-maintext>
+      </mat-sidenav-content>
+
+    </mat-sidenav-container>
   </div>
   <ng-template #login>
     <div class="login-grid">
