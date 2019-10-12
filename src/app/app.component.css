@@ -13,10 +13,17 @@ app-header {
 }
 
 mat-sidenav {
-  background-color: #ddd;
   grid-area: sidenav;
   overflow: scroll;
 }
+
+.mat-drawer-container {
+  background-color: white !important;
+}
+
+/*mat-sidenav {*/
+/*  background-color: black;*/
+/*}*/
 
 mat-sidenav-content {
   grid-area: maintext;

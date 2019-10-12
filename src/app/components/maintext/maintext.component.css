@@ -39,7 +39,6 @@ form {
 
 .note {
   grid-area: note;
-  background-color: pink;
   border: none;
   overflow: scroll !important;
   outline: none !important;
