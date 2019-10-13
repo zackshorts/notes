@@ -3,5 +3,5 @@
     <textarea matInput rows="1" cdkTextareaAutosize formControlName="title" placeholder="Note Title" [(ngModel)]="title" ></textarea>
   </mat-form-field>
   <br>
-  <textarea formControlName="note"  [(ngModel)]="note" class="note" placeholder="Enter your note"></textarea>
+  <textarea formControlName="note"  [(ngModel)]="note" class="note" placeholder="Enter your note">{{this.users}}</textarea>
 </form>
