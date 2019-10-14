@@ -13,6 +13,10 @@ export class DataService {
     return this.firestore.collection('users').snapshotChanges();
   }
 
+  getNotebook(userId: User, notebookId: string) {
+    return this.firestore.collection(`users/${userId}/notebooks/${notebookId}`).snapshotChanges();
+  }
+
   getNotebooks(userId: User) {
     return this.firestore.collection(`users/${userId}/notebooks`).snapshotChanges();
   }

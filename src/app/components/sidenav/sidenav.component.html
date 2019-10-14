@@ -6,20 +6,7 @@
       </mat-panel-title>
     </mat-expansion-panel-header>
     <div *ngFor="let notebook of notebooks.notes">
-      <h2><a href="https://just-a-notebook.firebaseapp.com/">{{notebook.title}}</a></h2>
+      <h3><a [routerLink]="['/note', notebook.id]">{{notebook.title}}</a></h3>
     </div>
   </mat-expansion-panel>
-
-<!--  <div *ngFor="let notebook of notebooks.notes">-->
-<!--  <mat-expansion-panel>-->
-<!--    <mat-expansion-panel-header>-->
-<!--      <mat-panel-title>-->
-<!--        Dynamic Notebooks-->
-<!--      </mat-panel-title>-->
-<!--    </mat-expansion-panel-header>-->
-<!--    <div>-->
-<!--      <a href="https://just-a-notebook.firebaseapp.com/">{{notebook.title}}</a><br>-->
-<!--    </div>-->
-<!--  </mat-expansion-panel>-->
-<!--  </div>-->
 </mat-accordion>

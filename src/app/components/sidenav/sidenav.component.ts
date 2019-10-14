@@ -26,10 +26,13 @@ export class SidenavComponent implements OnInit {
       this.dataService.getNotebooks(user.uid).subscribe(nbs => {
         nbs.map(actions => {
           let note = {
+            id: actions.payload.doc.id,
+            // @ts-ignore
             title: actions.payload.doc.data().title,
+            // @ts-ignore
             note: actions.payload.doc.data().note
           } as Note;
-          console.log(note);
+          // console.log(note);
           this.notebooks.notes.push(note);
         });
       });
