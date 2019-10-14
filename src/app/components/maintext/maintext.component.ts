@@ -15,8 +15,6 @@ export class MaintextComponent implements OnInit {
 
   title: string;
   note: string;
-  users: any[];
-  notebooks: any[];
 
   noteForm = new FormGroup({
     title: new FormControl(this.title),
@@ -24,16 +22,20 @@ export class MaintextComponent implements OnInit {
   });
 
   ngOnInit() {
-    this.dataService.getUsers().subscribe(data => {
-      this.users = data;
-      console.log(this.users);
-    });
-    this.auth.user$.subscribe(user => {
-      console.log(user);
-      this.dataService.getNotebooks(user.uid).subscribe(notebooks => {
-        this.notebooks = notebooks;
-        console.log(this.notebooks);
-      });
-    })
+    // this.dataService.getUsers().subscribe(data => {
+    //   data.map(actions => {
+    //     console.log(actions.payload.doc.data());
+    //     console.log(actions.payload.doc.id);
+    //     });
+    //   });
+
+    // this.auth.user$.subscribe(user => {
+    //   this.dataService.getNotebooks(user.uid).subscribe(notebooks => {
+    //       notebooks.map(actions => {
+    //         console.log(actions.payload.doc.data());
+    //         console.log(actions.payload.doc.id);
+    //       })
+    //   });
+    // })
   }
 }

@@ -1,4 +1,5 @@
+import {Note} from './note.model';
+
 export interface Notebook {
-  title: string;
-  text: string;
+  notes: Note[]
 }
