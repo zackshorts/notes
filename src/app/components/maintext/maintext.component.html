@@ -1,7 +1,7 @@
 <form [formGroup]="noteForm" >
   <mat-form-field class="title">
-    <textarea matInput rows="1" cdkTextareaAutosize formControlName="title" placeholder="Note Title" [(ngModel)]="title" ></textarea>
+    <textarea matInput rows="1" cdkTextareaAutosize formControlName="title" placeholder="Note Title" [(ngModel)]="note.title" ></textarea>
   </mat-form-field>
   <br>
-  <textarea formControlName="note"  [(ngModel)]="note" class="note" placeholder="Enter your note"></textarea>
+  <textarea formControlName="note"  [(ngModel)]="note.note" class="note" placeholder="Enter your note"></textarea>
 </form>
