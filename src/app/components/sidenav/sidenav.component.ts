@@ -3,7 +3,7 @@ import {AuthService} from '../../services/auth.service';
 import {DataService} from '../../services/data.service';
 import {Note} from '../../models/note.model';
 import {Notebook} from '../../models/notebook.model';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-sidenav',
@@ -12,7 +12,7 @@ import {Router} from '@angular/router';
 })
 export class SidenavComponent implements OnInit {
 
-  constructor(public auth: AuthService, private dataService: DataService, private router: Router) { }
+  constructor(public auth: AuthService, private dataService: DataService, private router: Router, private activatedRoute: ActivatedRoute) { }
   @Input() user;
   notes:  Note[] = [];
 
@@ -21,6 +21,7 @@ export class SidenavComponent implements OnInit {
   }
 
   getUsersNotebook() {
+    this.notes = [];
     this.auth.user$.subscribe(user => {
       this.dataService.getNotes(user.uid).subscribe(nbs => {
         nbs.map(actions => {
@@ -42,6 +43,11 @@ export class SidenavComponent implements OnInit {
     this.dataService.createNote(this.user.uid).then(r => {
       this.router.navigate([`/note/${r.id}`]);
     });
+    this.getUsersNotebook();
   }
 
+  deleteNote(noteId: string) {
+    this.dataService.deleteNote(this.user.uid, noteId);
+    this.getUsersNotebook();
+  }
 }

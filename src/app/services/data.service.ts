@@ -28,4 +28,8 @@ export class DataService {
       note: ""
     });
   }
+
+  deleteNote(userId: User, noteId: string) {
+    return this.firestore.collection(`users/${userId}/notebook`).doc(noteId).delete();
+  }
 }

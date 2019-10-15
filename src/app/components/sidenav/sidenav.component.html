@@ -6,7 +6,7 @@
       </mat-panel-title>
     </mat-expansion-panel-header>
     <div *ngFor="let notebook of notes">
-      <h3><a [routerLink]="['/note', notebook.id]">{{notebook.title}}</a></h3>
+      <h3><a [routerLink]="['/note', notebook.id]">{{notebook.title}} </a><mat-icon (click)="deleteNote(notebook.id)">delete</mat-icon></h3>
     </div>
   </mat-expansion-panel>
 </mat-accordion>
