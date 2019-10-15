@@ -20,12 +20,10 @@ export class MaintextComponent implements OnInit {
     title: "",
     note: ""
   };
-  title: string;
-  // note: string;
 
   noteForm = new FormGroup({
-    title: new FormControl(this.title),
-    note: new FormControl(this.note),
+    title: new FormControl(this.note.title),
+    note: new FormControl(this.note.note),
   });
 
   ngOnInit() {
@@ -36,7 +34,7 @@ export class MaintextComponent implements OnInit {
     this.activatedRoute.params.subscribe(params => {
       let notebookId = params['id'];
       this.auth.user$.subscribe(user => {
-        this.dataService.getNotebooks(user.uid).subscribe(nbs => {
+        this.dataService.getNotes(user.uid).subscribe(nbs => {
           nbs.map(element => {
             if (element.payload.doc.id === notebookId) {
               // @ts-ignore

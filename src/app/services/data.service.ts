@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore} from '@angular/fire/firestore';
 import { User } from "../models/user.model"
+import {Note} from '../models/note.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,14 +15,17 @@ export class DataService {
   }
 
   getNotebook(userId: User, notebookId: string) {
-    return this.firestore.collection(`users/${userId}/notebooks/${notebookId}`).snapshotChanges();
+    return this.firestore.collection(`users/${userId}/notebook/${notebookId}`).snapshotChanges();
   }
 
-  getNotebooks(userId: User) {
-    return this.firestore.collection(`users/${userId}/notebooks`).snapshotChanges();
+  getNotes(userId: User) {
+    return this.firestore.collection(`users/${userId}/notebook`).snapshotChanges();
   }
 
-  createNotebook(notebookName: string, userId: User){
-    return this.firestore.collection(`users/${userId}/notebooks/`).add(notebookName);
+  createNote(userId: User){
+    return this.firestore.collection(`users/${userId}/notebook/`).add({
+      title: "Untitled",
+      note: ""
+    });
   }
 }

@@ -3,6 +3,7 @@ import {AuthService} from '../../services/auth.service';
 import {DataService} from '../../services/data.service';
 import {Note} from '../../models/note.model';
 import {Notebook} from '../../models/notebook.model';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-sidenav',
@@ -11,19 +12,17 @@ import {Notebook} from '../../models/notebook.model';
 })
 export class SidenavComponent implements OnInit {
 
-  constructor(public auth: AuthService, private dataService: DataService) { }
+  constructor(public auth: AuthService, private dataService: DataService, private router: Router) { }
   @Input() user;
-  notebooks: Notebook = {
-    notes: []
-  };
+  notes:  Note[] = [];
 
   ngOnInit() {
-    this.getUsersNotebooks();
+    this.getUsersNotebook();
   }
 
-  getUsersNotebooks() {
+  getUsersNotebook() {
     this.auth.user$.subscribe(user => {
-      this.dataService.getNotebooks(user.uid).subscribe(nbs => {
+      this.dataService.getNotes(user.uid).subscribe(nbs => {
         nbs.map(actions => {
           let note = {
             id: actions.payload.doc.id,
@@ -33,10 +32,16 @@ export class SidenavComponent implements OnInit {
             note: actions.payload.doc.data().note
           } as Note;
           // console.log(note);
-          this.notebooks.notes.push(note);
+          this.notes.push(note);
         });
       });
     })
+  }
+
+  addNote() {
+    this.dataService.createNote(this.user.uid).then(r => {
+      this.router.navigate([`/note/${r.id}`]);
+    });
   }
 
 }
