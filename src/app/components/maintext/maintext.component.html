@@ -1,4 +1,4 @@
-<form [formGroup]="noteForm" >
+<form [formGroup]="noteForm" (keydown)="onKeyDown($event)" tabindex="0">
   <mat-form-field class="title">
     <textarea matInput rows="1" cdkTextareaAutosize formControlName="title" placeholder="Note Title" [(ngModel)]="note.title" ></textarea>
   </mat-form-field>

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, DoCheck, OnInit} from '@angular/core';
 import {AuthService} from '../../services/auth.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {DataService} from '../../services/data.service';
@@ -30,6 +30,15 @@ export class MaintextComponent implements OnInit {
     this.getNoteData();
   }
 
+  private updateNotebook() {
+    this.activatedRoute.params.subscribe(params => {
+      let notebookId = params['id'];
+      this.auth.user$.subscribe(user => {
+        this.dataService.updateNote(user.uid, notebookId, this.noteForm.get('title').value, this.noteForm.get('note').value);
+      });
+    });
+  }
+
   private getNoteData() {
     this.activatedRoute.params.subscribe(params => {
       let notebookId = params['id'];
@@ -47,5 +56,37 @@ export class MaintextComponent implements OnInit {
         });
       });
     });
+  }
+
+  onKeyDown($event): void {
+    // Detect platform
+    if(navigator.platform.match('Mac')){
+      this.handleMacKeyEvents($event);
+    }
+    else {
+      this.handleWindowsKeyEvents($event);
+    }
+  }
+
+  handleMacKeyEvents($event) {
+    // MetaKey documentation
+    // https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/metaKey
+    let charCode = String.fromCharCode($event.which).toLowerCase();
+    if ($event.metaKey && charCode === 's') {
+      // Action on Cmd + S
+      console.log('MAC SAVE');
+      this.updateNotebook();
+      $event.preventDefault();
+    }
+  }
+
+  handleWindowsKeyEvents($event) {
+    let charCode = String.fromCharCode($event.which).toLowerCase();
+    if ($event.ctrlKey && charCode === 's') {
+      // Action on Ctrl + S
+      console.log('WINDOWS SAVE');
+      this.updateNotebook();
+      $event.preventDefault();
+    }
   }
 }

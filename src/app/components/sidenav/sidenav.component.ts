@@ -34,17 +34,6 @@ export class SidenavComponent implements OnInit {
           } as Note;
           this.notes.push(noteObj);
           });
-          // notes.map(actions => {
-          //         //   let note = {
-          //         //     id: actions.payload.doc.id,
-          //         //     // @ts-ignore
-          //         //     title: actions.payload.doc.data().title,
-          //         //     // @ts-ignore
-          //         //     note: actions.payload.doc.data().note,
-          //         //     uid: user.uid,
-          //         //   } as Note;
-          //         //   this.notes.push(note);
-          //         // });
         });
       });
     }

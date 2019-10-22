@@ -32,4 +32,8 @@ export class DataService {
   deleteNote(userId: User, noteId: string) {
     return this.firestore.collection(`users/${userId}/notebook`).doc(noteId).delete();
   }
+
+  updateNote(userId: User, noteId: string, title: string, noteText: string) {
+    return this.firestore.collection(`users/${userId}/notebook`).doc(noteId).update({title: title, note: noteText})
+  }
 }
