@@ -22,6 +22,7 @@ export class SidenavComponent implements OnInit {
   getUsersNotebook() {
     this.auth.user$.subscribe(user => {
       this.dataService.getNotes(user.uid).subscribe(notes => {
+        this.notes = [];
         notes.forEach(note => {
           let noteObj = {
             id: note.payload.doc.id,
@@ -31,25 +32,23 @@ export class SidenavComponent implements OnInit {
             note: note.payload.doc.data().note,
             uid: user.uid,
           } as Note;
-          console.log(noteObj);
-          if(this.notes.some(e => e.id === noteObj.id)) {
-            this.notes.push(noteObj);
-          }
-        })
-        // notes.map(actions => {
-        //         //   let note = {
-        //         //     id: actions.payload.doc.id,
-        //         //     // @ts-ignore
-        //         //     title: actions.payload.doc.data().title,
-        //         //     // @ts-ignore
-        //         //     note: actions.payload.doc.data().note,
-        //         //     uid: user.uid,
-        //         //   } as Note;
-        //         //   this.notes.push(note);
-        //         // });
+          this.notes.push(noteObj);
+          });
+          // notes.map(actions => {
+          //         //   let note = {
+          //         //     id: actions.payload.doc.id,
+          //         //     // @ts-ignore
+          //         //     title: actions.payload.doc.data().title,
+          //         //     // @ts-ignore
+          //         //     note: actions.payload.doc.data().note,
+          //         //     uid: user.uid,
+          //         //   } as Note;
+          //         //   this.notes.push(note);
+          //         // });
+        });
       });
-    })
-  }
+    }
+
 
   addNote() {
     this.dataService.createNote(this.user.uid).then(r => {
