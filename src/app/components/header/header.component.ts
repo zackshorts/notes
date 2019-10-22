@@ -8,6 +8,7 @@ import {AuthService} from '../../services/auth.service';
 })
 export class HeaderComponent implements OnInit {
   @Input() user;
+  @Input() userImage;
   constructor(private auth: AuthService) { }
 
   ngOnInit() {
