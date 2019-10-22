@@ -2,7 +2,6 @@ import {Component, Input, OnInit} from '@angular/core';
 import {AuthService} from '../../services/auth.service';
 import {DataService} from '../../services/data.service';
 import {Note} from '../../models/note.model';
-import {Notebook} from '../../models/notebook.model';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
@@ -21,20 +20,33 @@ export class SidenavComponent implements OnInit {
   }
 
   getUsersNotebook() {
-    this.notes = [];
     this.auth.user$.subscribe(user => {
-      this.dataService.getNotes(user.uid).subscribe(nbs => {
-        nbs.map(actions => {
-          let note = {
-            id: actions.payload.doc.id,
+      this.dataService.getNotes(user.uid).subscribe(notes => {
+        notes.forEach(note => {
+          let noteObj = {
+            id: note.payload.doc.id,
             // @ts-ignore
-            title: actions.payload.doc.data().title,
+            title: note.payload.doc.data().title,
             // @ts-ignore
-            note: actions.payload.doc.data().note
+            note: note.payload.doc.data().note,
+            uid: user.uid,
           } as Note;
-          // console.log(note);
-          this.notes.push(note);
-        });
+          console.log(noteObj);
+          if(this.notes.some(e => e.id === noteObj.id)) {
+            this.notes.push(noteObj);
+          }
+        })
+        // notes.map(actions => {
+        //         //   let note = {
+        //         //     id: actions.payload.doc.id,
+        //         //     // @ts-ignore
+        //         //     title: actions.payload.doc.data().title,
+        //         //     // @ts-ignore
+        //         //     note: actions.payload.doc.data().note,
+        //         //     uid: user.uid,
+        //         //   } as Note;
+        //         //   this.notes.push(note);
+        //         // });
       });
     })
   }
@@ -43,11 +55,9 @@ export class SidenavComponent implements OnInit {
     this.dataService.createNote(this.user.uid).then(r => {
       this.router.navigate([`/note/${r.id}`]);
     });
-    this.getUsersNotebook();
   }
 
   deleteNote(noteId: string) {
     this.dataService.deleteNote(this.user.uid, noteId);
-    this.getUsersNotebook();
   }
 }
