@@ -9,7 +9,6 @@
       <mat-sidenav-content>
           <button class="sidenav-button" mat-button *ngIf="!sidenav.opened" (click)="sidenav.open()"><mat-icon>navigate_next</mat-icon></button>
           <button class="sidenav-button" mat-button *ngIf="sidenav.opened" (click)="sidenav.close()"><mat-icon>navigate_before</mat-icon></button>
-<!--        <app-maintext></app-maintext>-->
           <router-outlet></router-outlet>
       </mat-sidenav-content>
 

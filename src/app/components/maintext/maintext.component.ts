@@ -2,7 +2,7 @@ import {Component, DoCheck, OnInit} from '@angular/core';
 import {AuthService} from '../../services/auth.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {DataService} from '../../services/data.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Note} from '../../models/note.model';
 
 @Component({
@@ -12,9 +12,10 @@ import {Note} from '../../models/note.model';
 })
 export class MaintextComponent implements OnInit {
 
-  constructor(public auth: AuthService, private dataService: DataService, private activatedRoute: ActivatedRoute) {
+  constructor(public auth: AuthService, private dataService: DataService, private activatedRoute: ActivatedRoute, private router: Router) {
+    if(this.router.url === "/") this.emptyNote = true;
   }
-
+  emptyNote: boolean = false;
   note: Note = {
     id: "",
     title: "",

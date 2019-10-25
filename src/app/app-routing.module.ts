@@ -4,7 +4,8 @@ import {AppComponent} from './app.component';
 import {MaintextComponent} from './components/maintext/maintext.component';
 
 const routes: Routes = [
-  {path: 'note/:id', component: MaintextComponent}
+  {path: 'note/:id', component: MaintextComponent},
+  {path: '', component: MaintextComponent}
 ];
 
 @NgModule({

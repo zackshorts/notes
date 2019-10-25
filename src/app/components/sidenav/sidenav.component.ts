@@ -47,5 +47,5 @@ export class SidenavComponent implements OnInit {
 
   deleteNote(noteId: string) {
     this.dataService.deleteNote(this.user.uid, noteId);
-  }
+    this.router.navigate(['/'])  }
 }
