@@ -4,7 +4,8 @@
 
         <div class="nav">
           <p>Welcome, {{user}}</p>
-          <button mat-raised-button (click)="auth.signOut()" color="accent">sign out</button>
+          <img class="userImage" src={{userImage}} />
+          <button mat-raised-button (click)="auth.signOut()">sign out</button>
         </div>
 
     </mat-toolbar-row>
