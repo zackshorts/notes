@@ -1,0 +1,18 @@
+button {
+  margin-top: 40px;
+  float: right;
+}
+
+mat-icon {
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+mat-icon:hover {
+  color: #ff4081;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}

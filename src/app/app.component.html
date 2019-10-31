@@ -4,12 +4,11 @@
     <app-header [user]="user.displayName" [userImage]="user.photoURL"></app-header>
     <mat-sidenav-container class="example-container" >
 
-      <mat-sidenav mode="side" #sidenav ><app-sidenav></app-sidenav></mat-sidenav>
+      <mat-sidenav mode="side" #sidenav ><app-sidenav [user]="user"></app-sidenav></mat-sidenav>
 
       <mat-sidenav-content>
           <button class="sidenav-button" mat-button *ngIf="!sidenav.opened" (click)="sidenav.open()"><mat-icon>navigate_next</mat-icon></button>
           <button class="sidenav-button" mat-button *ngIf="sidenav.opened" (click)="sidenav.close()"><mat-icon>navigate_before</mat-icon></button>
-<!--        <app-maintext></app-maintext>-->
           <router-outlet></router-outlet>
       </mat-sidenav-content>
 

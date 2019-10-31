@@ -15,6 +15,7 @@ app-header {
 mat-sidenav {
   grid-area: sidenav;
   overflow: scroll;
+  width: 35vw;
 }
 
 .mat-drawer-container {
