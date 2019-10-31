@@ -17,6 +17,11 @@ form {
   vertical-align: middle;
 }
 
+.mat-simple-snackbar {
+  justify-content: center;
+  text-align: center;
+}
+
 .note {
   grid-area: note;
   border: none;

@@ -19,7 +19,8 @@ import {
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
-  MatSidenavModule
+  MatSidenavModule,
+  MatSnackBarModule
 } from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
@@ -38,6 +39,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     AngularFireAuthModule,
+    MatSnackBarModule,
     MatButtonModule,
     MatCardModule,
     MatExpansionModule,

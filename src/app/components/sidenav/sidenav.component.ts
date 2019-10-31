@@ -41,7 +41,8 @@ export class SidenavComponent implements OnInit {
 
   addNote() {
     this.dataService.createNote(this.user.uid).then(r => {
-      this.router.navigate([`/note/${r.id}`]);
+      this.router.navigate([`/`]);
+      // this.router.navigate([`/note/${r.id}`]);
     });
   }
 

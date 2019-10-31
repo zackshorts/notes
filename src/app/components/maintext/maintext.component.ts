@@ -4,6 +4,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {DataService} from '../../services/data.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Note} from '../../models/note.model';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-maintext',
@@ -12,7 +13,7 @@ import {Note} from '../../models/note.model';
 })
 export class MaintextComponent implements OnInit {
 
-  constructor(public auth: AuthService, private dataService: DataService, private activatedRoute: ActivatedRoute, private router: Router) {
+  constructor(public auth: AuthService, private dataService: DataService, private activatedRoute: ActivatedRoute, private router: Router, private snackBar: MatSnackBar) {
     if(this.router.url === "/") this.emptyNote = true;
   }
   emptyNote: boolean = false;
@@ -67,6 +68,7 @@ export class MaintextComponent implements OnInit {
     else {
       this.handleWindowsKeyEvents($event);
     }
+
   }
 
   handleMacKeyEvents($event) {
@@ -78,6 +80,10 @@ export class MaintextComponent implements OnInit {
       console.log('MAC SAVE');
       this.updateNotebook();
       $event.preventDefault();
+      this.snackBar.open('Note saved succesfully!', "Dismiss",{
+        duration: 2000,
+        panelClass: 'center'
+      });
     }
   }
 
@@ -88,6 +94,10 @@ export class MaintextComponent implements OnInit {
       console.log('WINDOWS SAVE');
       this.updateNotebook();
       $event.preventDefault();
+      this.snackBar.open('Note saved succesfully!', "Dismiss",{
+        duration: 2000,
+        panelClass: 'center'
+      });
     }
   }
 }
