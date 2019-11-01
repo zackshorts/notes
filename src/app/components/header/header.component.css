@@ -3,6 +3,10 @@ a, img {
   width: auto;
 }
 
+h1 {
+  margin: auto .5em;
+}
+
 .userImage {
   height: 3rem;
   width: auto;
@@ -24,4 +28,17 @@ a, img {
 
 p {
   margin-right: 15px;
+}
+
+
+@media (max-width: 660px) {
+  .welcome {
+    display: none;
+  }
+}
+
+@media (max-width: 450px) {
+  .title {
+    display: none;
+  }
 }
