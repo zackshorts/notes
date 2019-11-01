@@ -1,9 +1,9 @@
 <mat-toolbar color='primary'>
     <mat-toolbar-row>
         <a href="../../../index.html"><img src="../../../assets/note.svg"/></a>
-
+        <h1 class="title">Just-A-Notebook</h1>
         <div class="nav">
-          <p>Welcome, {{user}}</p>
+          <p class="welcome">Welcome, {{user}}</p>
           <img class="userImage" src={{userImage}} />
           <button mat-raised-button (click)="auth.signOut()">sign out</button>
         </div>
