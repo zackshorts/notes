@@ -62,45 +62,33 @@ export class MaintextComponent implements OnInit {
       });
     });
   }
-  //
-  // onKeyDown($event): void {
-  //   // Detect platform
-  //   if(navigator.platform.match('Mac')){
-  //     this.handleMacKeyEvents($event);
-  //   }
-  //   else {
-  //     this.handleWindowsKeyEvents($event);
-  //   }
-  //
-  // }
-  //
-  // handleMacKeyEvents($event) {
-  //   // MetaKey documentation
-  //   // https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/metaKey
-  //   let charCode = String.fromCharCode($event.which).toLowerCase();
-  //   if ($event.metaKey && charCode === 's') {
-  //     // Action on Cmd + S
-  //     console.log('MAC SAVE');
-  //     this.updateNotebook();
-  //     $event.preventDefault();
-  //     this.snackBar.open('Note saved succesfully!', "Dismiss",{
-  //       duration: 2000,
-  //       panelClass: 'center'
-  //     });
-  //   }
-  // }
-  //
-  // handleWindowsKeyEvents($event) {
-  //   let charCode = String.fromCharCode($event.which).toLowerCase();
-  //   if ($event.ctrlKey && charCode === 's') {
-  //     // Action on Ctrl + S
-  //     console.log('WINDOWS SAVE');
-  //     this.updateNotebook();
-  //     $event.preventDefault();
-  //     this.snackBar.open('Note saved succesfully!', "Dismiss",{
-  //       duration: 2000,
-  //       panelClass: 'center'
-  //     });
-    // }
-  // }
+
+  onKeyDown($event): void {
+    if(navigator.platform.match('Mac')){
+      this.handleMacKeyEvents($event);
+    }
+    else {
+      this.handleWindowsKeyEvents($event);
+    }
+  }
+
+  handleMacKeyEvents($event) {
+    let charCode = String.fromCharCode($event.which).toLowerCase();
+    if ($event.metaKey && charCode === 's') {
+      // Action on Cmd + S
+      console.log('MAC SAVE');
+      this.updateNotebook();
+      $event.preventDefault();
+    }
+  }
+
+  handleWindowsKeyEvents($event) {
+    let charCode = String.fromCharCode($event.which).toLowerCase();
+    if ($event.ctrlKey && charCode === 's') {
+      // Action on Ctrl + S
+      console.log('WINDOWS SAVE');
+      this.updateNotebook();
+      $event.preventDefault();
+    }
+  }
 }
