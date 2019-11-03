@@ -16,3 +16,13 @@ a {
   text-decoration: none;
   color: black;
 }
+
+.note-link {
+  width: 100%;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.note-link:hover {
+  background-color: #ddd;
+}

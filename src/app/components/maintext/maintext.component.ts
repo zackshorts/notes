@@ -33,10 +33,13 @@ export class MaintextComponent implements OnInit {
   }
 
   private updateNotebook() {
-    this.activatedRoute.params.subscribe(params => {
-      let notebookId = params['id'];
-      this.auth.user$.subscribe(user => {
-        this.dataService.updateNote(user.uid, notebookId, this.noteForm.get('title').value, this.noteForm.get('note').value);
+    let notebookId = this.router.url.split("/")[2];
+    this.auth.user$.subscribe(user => {
+      this.dataService.updateNote(user.uid, notebookId, this.noteForm.get('title').value, this.noteForm.get('note').value).then(r => {
+        this.snackBar.open('Note saved succesfully!', "Dismiss",{
+          duration: 2000,
+          panelClass: 'center'
+        });
       });
     });
   }
@@ -59,45 +62,45 @@ export class MaintextComponent implements OnInit {
       });
     });
   }
-
-  onKeyDown($event): void {
-    // Detect platform
-    if(navigator.platform.match('Mac')){
-      this.handleMacKeyEvents($event);
-    }
-    else {
-      this.handleWindowsKeyEvents($event);
-    }
-
-  }
-
-  handleMacKeyEvents($event) {
-    // MetaKey documentation
-    // https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/metaKey
-    let charCode = String.fromCharCode($event.which).toLowerCase();
-    if ($event.metaKey && charCode === 's') {
-      // Action on Cmd + S
-      console.log('MAC SAVE');
-      this.updateNotebook();
-      $event.preventDefault();
-      this.snackBar.open('Note saved succesfully!', "Dismiss",{
-        duration: 2000,
-        panelClass: 'center'
-      });
-    }
-  }
-
-  handleWindowsKeyEvents($event) {
-    let charCode = String.fromCharCode($event.which).toLowerCase();
-    if ($event.ctrlKey && charCode === 's') {
-      // Action on Ctrl + S
-      console.log('WINDOWS SAVE');
-      this.updateNotebook();
-      $event.preventDefault();
-      this.snackBar.open('Note saved succesfully!', "Dismiss",{
-        duration: 2000,
-        panelClass: 'center'
-      });
-    }
-  }
+  //
+  // onKeyDown($event): void {
+  //   // Detect platform
+  //   if(navigator.platform.match('Mac')){
+  //     this.handleMacKeyEvents($event);
+  //   }
+  //   else {
+  //     this.handleWindowsKeyEvents($event);
+  //   }
+  //
+  // }
+  //
+  // handleMacKeyEvents($event) {
+  //   // MetaKey documentation
+  //   // https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/metaKey
+  //   let charCode = String.fromCharCode($event.which).toLowerCase();
+  //   if ($event.metaKey && charCode === 's') {
+  //     // Action on Cmd + S
+  //     console.log('MAC SAVE');
+  //     this.updateNotebook();
+  //     $event.preventDefault();
+  //     this.snackBar.open('Note saved succesfully!', "Dismiss",{
+  //       duration: 2000,
+  //       panelClass: 'center'
+  //     });
+  //   }
+  // }
+  //
+  // handleWindowsKeyEvents($event) {
+  //   let charCode = String.fromCharCode($event.which).toLowerCase();
+  //   if ($event.ctrlKey && charCode === 's') {
+  //     // Action on Ctrl + S
+  //     console.log('WINDOWS SAVE');
+  //     this.updateNotebook();
+  //     $event.preventDefault();
+  //     this.snackBar.open('Note saved succesfully!', "Dismiss",{
+  //       duration: 2000,
+  //       panelClass: 'center'
+  //     });
+    // }
+  // }
 }

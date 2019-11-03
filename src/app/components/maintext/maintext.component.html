@@ -1,5 +1,5 @@
 <div *ngIf="!emptyNote">
-  <form [formGroup]="noteForm" (keydown)="onKeyDown($event)" tabindex="0">
+  <form [formGroup]="noteForm" tabindex="0">
     <mat-form-field class="title">
       <textarea maxlength="40" matInput rows="1" cdkTextareaAutosize formControlName="title" placeholder="Note Title - {{this.noteForm.get('title').value.length}}/40 remaining" [(ngModel)]="note.title" ></textarea>
     </mat-form-field>
@@ -10,3 +10,5 @@
 <div *ngIf="emptyNote" class="noNoteSelected">
   No note is selected!
 </div>
+<button class="save-button" mat-fab color="primary" [disabled]="!noteForm.dirty" (click)="updateNotebook()"><mat-icon>save</mat-icon></button>
+

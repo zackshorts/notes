@@ -18,7 +18,7 @@ import {
   MatExpansionModule,
   MatFormFieldModule,
   MatIconModule,
-  MatInputModule,
+  MatInputModule, MatListModule,
   MatSidenavModule,
   MatSnackBarModule
 } from '@angular/material';
@@ -49,6 +49,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     MatInputModule,
     ReactiveFormsModule,
     FormsModule,
+    MatListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

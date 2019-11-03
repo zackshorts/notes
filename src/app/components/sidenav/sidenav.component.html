@@ -1,13 +1,7 @@
-<mat-accordion>
-  <mat-expansion-panel>
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        Your Notes
-      </mat-panel-title>
-    </mat-expansion-panel-header>
-    <div *ngFor="let notebook of notes">
-      <h3><mat-icon style="vertical-align: middle;" (click)="deleteNote(notebook.id)">delete</mat-icon> <a [routerLink]="['/note', notebook.id]">{{notebook.title}} </a></h3>
-    </div>
-  </mat-expansion-panel>
-</mat-accordion>
+<mat-list>
+  <mat-list-item *ngFor="let note of notes">
+    <h3><mat-icon style="vertical-align: middle;" (click)="deleteNote(note.id)">delete</mat-icon> <a class="note-link" [routerLink]="['/note', note.id]">{{note.title}} </a></h3>
+  </mat-list-item>
+</mat-list>
 <button mat-raised-button color="accent" (click)="addNote()"><mat-icon>add</mat-icon> Add Note</button>
+
