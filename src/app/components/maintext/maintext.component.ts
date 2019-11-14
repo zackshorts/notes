@@ -73,13 +73,20 @@ export class MaintextComponent implements OnInit {
   }
 
   handleMacKeyEvents($event) {
-    let charCode = String.fromCharCode($event.which).toLowerCase();
+    let charCode =String.fromCharCode($event.which).toLowerCase();
     if ($event.metaKey && charCode === 's') {
       // Action on Cmd + S
-      console.log('MAC SAVE');
       this.updateNotebook();
       $event.preventDefault();
     }
+    // if(charCode === '\t') {
+    //   let textarea = document.getElementById('main-text');
+    //   const input : HTMLInputElement = <HTMLInputElement>textarea;
+    //   let startPosition = input.selectionStart;
+    //   this.note.note = this.note.note.substring(0,startPosition)+'        '+this.note.note.substring(startPosition, this.note.note.length);
+    //   input.selectionStart = startPosition+8;
+    //   $event.preventDefault();
+    // }
   }
 
   handleWindowsKeyEvents($event) {
@@ -90,5 +97,13 @@ export class MaintextComponent implements OnInit {
       this.updateNotebook();
       $event.preventDefault();
     }
+    // if(charCode === '\t') {
+    //   let textarea = document.getElementById('main-text');
+    //   const input : HTMLInputElement = <HTMLInputElement>textarea;
+    //   let startPosition = input.selectionStart;
+    //   this.note.note = this.note.note.substring(0,startPosition)+'        '+this.note.note.substring(startPosition, this.note.note.length);
+    //   input.selectionEnd = startPosition+8;
+    //   $event.preventDefault();
+    // }
   }
 }

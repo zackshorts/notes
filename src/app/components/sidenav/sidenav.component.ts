@@ -3,6 +3,7 @@ import {AuthService} from '../../services/auth.service';
 import {DataService} from '../../services/data.service';
 import {Note} from '../../models/note.model';
 import {ActivatedRoute, Router} from '@angular/router';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-sidenav',
@@ -11,7 +12,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class SidenavComponent implements OnInit {
 
-  constructor(public auth: AuthService, private dataService: DataService, private router: Router, private activatedRoute: ActivatedRoute) { }
+  constructor(public auth: AuthService, private dataService: DataService, private router: Router, private activatedRoute: ActivatedRoute, private snackBar: MatSnackBar) { }
   @Input() user;
   notes:  Note[] = [];
 
@@ -42,10 +43,19 @@ export class SidenavComponent implements OnInit {
   addNote() {
     this.dataService.createNote(this.user.uid).then(r => {
       this.router.navigate([`/note/${r.id}`]);
+      this.snackBar.open('Note has been added!', "Dismiss",{
+        duration: 2000,
+        panelClass: 'center'
+      });
     });
   }
 
   deleteNote(noteId: string) {
     this.dataService.deleteNote(this.user.uid, noteId);
-    this.router.navigate(['/'])  }
+    this.router.navigate(['/'])
+    this.snackBar.open('Note has been deleted!', "Dismiss",{
+      duration: 2000,
+      panelClass: 'center'
+    });
+  }
 }

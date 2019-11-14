@@ -42,8 +42,12 @@ form {
 
 .save-button {
   position: absolute;
-  bottom: 15px;
-  right: 15px;
+  bottom: 45px;
+  right: 45px;
+}
+
+.save-button:hover {
+  color: #ff4081;
 }
 
 @media (max-width: 600px) {

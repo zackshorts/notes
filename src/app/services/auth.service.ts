@@ -6,13 +6,14 @@ import {AngularFirestore, AngularFirestoreDocument} from '@angular/fire/firestor
 import {User} from '../models/user.model';
 import {Observable, of} from 'rxjs';
 import {switchMap} from 'rxjs/operators';
+import {MatSnackBar} from '@angular/material';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   user$: Observable<any>;
-  constructor(private router: Router, private afs: AngularFirestore, private afAuth: AngularFireAuth) {
+  constructor(private router: Router, private afs: AngularFirestore, private afAuth: AngularFireAuth, private snackBar: MatSnackBar) {
     this.user$ = this.afAuth.authState.pipe(
       switchMap(user => {
         if(user)return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
@@ -31,6 +32,10 @@ export class AuthService {
 
   async signOut() {
     await this.afAuth.auth.signOut();
+    this.snackBar.open('Successfully logged out!', "Dismiss",{
+      duration: 2000,
+      panelClass: 'center'
+    });
     return this.router.navigate(['/']);
   }
 
@@ -42,6 +47,10 @@ export class AuthService {
       displayName: user.displayName,
       photoURL: user.photoURL
     };
+    this.snackBar.open(user.displayName + " has logged in!", "Dismiss",{
+      duration: 2000,
+      panelClass: 'center'
+    });
     return userRef.set(data, {merge: true});
   }
 }

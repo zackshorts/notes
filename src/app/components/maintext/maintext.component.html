@@ -4,11 +4,11 @@
       <textarea maxlength="40" matInput rows="1 " cdkTextareaAutosize formControlName="title" placeholder="Note Title - {{this.noteForm.get('title').value.length}}/40 remaining" [(ngModel)]="note.title" ></textarea>
     </mat-form-field>
     <br>
-    <textarea formControlName="note"  [(ngModel)]="note.note" class="note" placeholder="Enter your note"></textarea>
+    <textarea id="main-text" formControlName="note"  [(ngModel)]="note.note" class="note" placeholder="Enter your note"></textarea>
   </form>
 </div>
 <div *ngIf="emptyNote" class="noNoteSelected">
   No note is selected!
 </div>
-<button class="save-button" mat-fab color="primary" [disabled]="!noteForm.dirty" (click)="updateNotebook()"><mat-icon>save</mat-icon></button>
+<button class="save-button" mat-fab color="primary"  (click)="updateNotebook()"><mat-icon>save</mat-icon></button>
 

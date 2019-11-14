@@ -1,7 +1,7 @@
 <mat-list>
-  <mat-list-item *ngFor="let note of notes">
-    <h3><mat-icon style="vertical-align: middle;" (click)="deleteNote(note.id)">delete</mat-icon> <a class="note-link" [routerLink]="['/note', note.id]">{{note.title}} </a></h3>
+  <mat-list-item *ngFor="let note of notes" style="margin-bottom: 15px">
+    <h3><mat-icon class="delete-button" style="vertical-align: middle; padding: 5px" (click)="deleteNote(note.id)">delete</mat-icon> <a class="note-link" [routerLink]="['/note', note.id]">{{note.title}} </a></h3>
   </mat-list-item>
 </mat-list>
-<button mat-raised-button color="accent" (click)="addNote()"><mat-icon>add</mat-icon> Add Note</button>
+<button mat-fab color="accent" (click)="addNote()"><mat-icon>note_add</mat-icon></button>
 

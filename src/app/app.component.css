@@ -97,7 +97,7 @@ button:focus {outline:0;}
   padding: 0 24px;
   font-size: 14px;
   font-weight: bold;
-  font-family: 'Roboto',arial,sans-serif;
+  font-family: 'Fira Code',arial,sans-serif;
 }
 
 button ~ button {
@@ -111,4 +111,10 @@ mat-card {
 
 button {
   margin-top: 15px;
+}
+
+@media (max-width: 660px) {
+  mat-sidenav {
+    width: 80vw;
+  }
 }

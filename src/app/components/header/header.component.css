@@ -7,6 +7,11 @@ h1 {
   margin: auto .5em;
 }
 
+.title {
+  font-weight: 400;
+  font-family: 'Fira Code', monospace;
+}
+
 .userImage {
   height: 3rem;
   width: auto;
